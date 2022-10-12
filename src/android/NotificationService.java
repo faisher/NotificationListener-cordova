@@ -54,11 +54,11 @@ public class NotificationService extends NotificationListenerService {
 
         String pk = sbn.getPackageName();
 
-        if (pk.equals("android") ||  ignorePkg(pk) || sbn.isOngoing()) Log.d(TAG, "Ignore notification from pkg " + pk);
-        else {
+        //if (pk.equals("android") ||  ignorePkg(pk) || sbn.isOngoing()) Log.d(TAG, "Ignore notification from pkg " + pk);
+        //else {
             NotificationCommands.notifyListener(sbn, "REMOVED");
             removeNotification(sbn);
-        }
+        //}
     }
 
 
