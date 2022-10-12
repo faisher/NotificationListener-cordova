@@ -54,11 +54,11 @@ public class NotificationService extends NotificationListenerService {
 
         String pk = sbn.getPackageName();
 
-        //if (pk.equals("android") ||  ignorePkg(pk) || sbn.isOngoing()) Log.d(TAG, "Ignore notification from pkg " + pk);
-        //else {
+        if (pk.equals("android") ||  ignorePkg(pk) || sbn.isOngoing()) Log.d(TAG, "Ignore notification from pkg " + pk);
+        else {
             NotificationCommands.notifyListener(sbn, "REMOVED");
             removeNotification(sbn);
-        //}
+        }
     }
 
 
@@ -69,11 +69,11 @@ public class NotificationService extends NotificationListenerService {
 
         String pk = sbn.getPackageName();
 
-        if (pk.equals("android") ||  ignorePkg(pk) || sbn.isOngoing()) Log.d(TAG, "Ignore notification from pkg " + pk);
-        else {
+        //if (pk.equals("android") ||  ignorePkg(pk) || sbn.isOngoing()) Log.d(TAG, "Ignore notification from pkg " + pk);
+        //else {
             NotificationCommands.notifyListener(sbn, "POSTED");
             addNotification(sbn);
-        }
+        //}
     }
     private boolean ignorePkg(String pk){
         for(String s: IGNORE_PKG.split(",")) if (pk.contains(s)) return true;
